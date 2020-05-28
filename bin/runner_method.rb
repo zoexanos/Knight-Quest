@@ -51,26 +51,18 @@ def travel_knight
   my_buddy = Knight.all.last.name
 end 
 
-def end_inn(username)
-  puts `clear`
-  "Stay safe, #{username}"
-end
-
 def hit_the_road
+  puts `clear`
   puts "#{travel_knight}: 'Where shall we go?'"
   puts "\n"
   puts "
-  1. Travel to the sea.\nTravel to a town
-  2. Travel to a town.\nTravel to the mountains.
-  3. Travel to the mountains.\n
-  4.
-  5. Talk to that weird old man.\n
-  6. Give up and go home.\n Travel to the sea
+  1. Travel to a town.\n
+  2. Travel to the mountains.\n
+  3. Travel to the river.\n
+  4. Talk to that weird old man.\n
+  5. Travel to the sea.\n
+  6. Give up and go home.
   "
-  
-
-
-
   gets.chomp
 end
 

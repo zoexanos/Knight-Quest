@@ -1,7 +1,6 @@
 require 'bundler/setup'
 require "sinatra/activerecord"
 Bundler.require
-ActiveRecord::Base.logger.level = 1
 
 Dir[File.join(File.dirname(__FILE__), "../app/models", "*.rb")].each {|f| require f}
 

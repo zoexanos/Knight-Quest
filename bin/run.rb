@@ -6,7 +6,6 @@ username = welcome
 greeting(username)
 user_choice = menu
 
-
 while user_choice != "5"
   case user_choice
   when "1"
@@ -16,18 +15,18 @@ while user_choice != "5"
     add_knight
     user_choice = menu
   when "3"
-    hit_the_road
+    user_choice = hit_the_road
   end
 end
 
-while hit_the_road != "6"
-  case hit_the_road
+while user_choice != "6"
+  case user_choice
   when "1"
-    #
+    user_choice = hit_the_road
   when "2"
-    #
+    user_choice = hit_the_road
   when "3"
-    #
+    user_choice = hit_the_road
   end
 end
 
