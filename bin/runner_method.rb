@@ -1,7 +1,7 @@
 
 def welcome
   puts `clear`
-  puts "Welcome, weary knight. All may enter our homely inn."
+  puts "Welcome, weary traveler. All may enter our homely inn."
   puts <<-'EOF'
    ____||____
   ///////////\
@@ -25,6 +25,7 @@ def menu
   puts "
   1. Review all Knights that came before \n
   2. Add Knight\n
+  3. Go on Journey with Knight\n
   5. Leave the inn\n
   "
   gets.chomp
@@ -46,6 +47,26 @@ def add_knight
   puts `clear`
 end
 
+def travel_knight
+  my_buddy = Knight.all.last.name
+end 
+
+def end_inn(username)
+  puts `clear`
+  "Stay safe, #{username}"
+end
+
+def hit_the_road
+  puts "#{travel_knight}: 'Where shall we go?'"
+  puts "\n"
+  puts "
+  1. The ocean \n
+  2. Add Knight\n
+  3. Go on Journey with Knight\n
+  5. Leave the inn\n
+  "
+  gets.chomp
+end
 
 def all_knights
   puts `clear`
