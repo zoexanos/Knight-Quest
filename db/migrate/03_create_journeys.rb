@@ -4,5 +4,6 @@ class CreateJourneys < ActiveRecord::Migration[5.2]
       t.integer :knight_id
       t.integer :trial_id
       t.string :outcome
+    end
   end
 end
