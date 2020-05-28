@@ -60,10 +60,11 @@ def hit_the_road
   puts "#{travel_knight}: 'Where shall we go?'"
   puts "\n"
   puts "
-  1. The ocean \n
-  2. Add Knight\n
-  3. Go on Journey with Knight\n
-  5. Leave the inn\n
+  1. Travel to the sea.\n
+  2. Travel to a town.\n
+  3. Travel to the mountains.\n
+  4. Talk to that weird old man.\n
+  5. Give up and go home.
   "
   gets.chomp
 end
