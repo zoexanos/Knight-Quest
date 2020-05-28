@@ -20,7 +20,7 @@ while user_choice != "5"
   end
 end
 
-while hit_the_road != "5"
+while hit_the_road != "6"
   case hit_the_road
   when "1"
     #

@@ -1,9 +1,8 @@
 require 'bundler/setup'
 require "sinatra/activerecord"
 Bundler.require
+ActiveRecord::Base.logger.level = 1
 
-old_logger = ActiveRecord::Base.logger
-ActiveRecord::Base.logger = nil
 Dir[File.join(File.dirname(__FILE__), "../app/models", "*.rb")].each {|f| require f}
 
 connection_details = YAML::load(File.open('config/database.yml'))
