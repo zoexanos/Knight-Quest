@@ -39,7 +39,7 @@ def menu
 end
 
 def all_knights
-  $my_buddy = []
+  #$my_buddy = []
   puts `clear`
   puts "Kings Among Men:"
   puts Knight.all.map { |u| u.name }
@@ -53,7 +53,6 @@ def all_knights
   #knight_name = gets.chomp
   #$my_buddy << Knight.find_by(name: knight_name)
   #$my_buddy.last
-  puts `clear`
 end
 
 def add_knight
@@ -75,7 +74,7 @@ end
 def delete_knight
   puts `clear`
   puts "Kings Among Men:"
-  puts Knight.all.map { |u| u.name }
+  all_knights
   sleep(1)
   puts "\n\n\n"
   puts "What is the name of the dead knight?"
@@ -100,7 +99,7 @@ def edit_knight
   color = gets.chomp
   edit_knight = Knight.find_by(name: original_name)
   edit_knight.update(name: name, weapon: weapon, color: color)
-  puts "#{original_name} is now #{edit_knight.name}"
+  puts "#{original_name}'s name is now #{edit_knight.name}, their weapon is #{edit_knight.weapon}, their family color is #{edit_knight.color}"
   puts "Hit enter to continue."
   gets.chomp
   puts `clear`
@@ -130,7 +129,7 @@ end
 def hit_the_road
   puts `clear`
   puts "#{travel_knight}: 'Where shall we go?'"
-  sleep(1)
+  sleep(0.5)
   puts "\n"
   puts "
   1. Travel to a town.\n
@@ -257,17 +256,17 @@ def trial_select_4
     puts `clear`
     puts "Oh no! You guessed blue and both of you were magically knocked off the bridge!\nThe quest was a failure..."
     Journey.create(knight: Knight.all.last, trial: Trial.all.fifth, outcome: "Failure")
-    sleep(4)
+    sleep(3)
   elsif first_choice == "2"
     puts `clear`
     puts "Oh no! #{travel_knight} guessed red and both of you were magically knocked off the bridge!\nThe quest was a failure..."
     Journey.create(knight: Knight.all.last, trial: Trial.all.fifth, outcome: "Failure")
-    sleep(4)
+    sleep(3)
     else
     puts `clear`
     puts "That is not an appropriate response! Off the bridge with you!"
     Journey.create(knight: Knight.all.last, trial: Trial.all.fifth, outcome: "Failure")
-    sleep(4)
+    sleep(3)
   end
   puts `clear`
 end

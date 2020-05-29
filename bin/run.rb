@@ -10,6 +10,7 @@ if username
     case user_choice
     when "1"
       all_knights
+      puts `clear`
       user_choice = menu
     when "2"
       add_knight
