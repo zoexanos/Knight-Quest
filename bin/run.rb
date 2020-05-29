@@ -60,20 +60,20 @@ while user_road != "8"
   end
 end
 
-the_inn = welcome_back(username)
+the_end
 
-while the_inn != "5"
-  case the_inn
-    when "1"
-      puts "geez louise"
-      sleep(1)
-      the_inn = welcome_back(username)
-    when "2"
-      puts "holy cow batman"
-      sleep(1)
-      the_inn = welcome_back(username)
-    when "3"
-      the_end
-      exit
-  end
-end
+#the_inn = welcome_back(username)
+
+#while the_inn != "5"
+#  case the_inn
+#    when "1"
+#      trial_tally
+#      the_inn = welcome_back(username)
+#    when "2"
+#      trial_tally
+#      the_inn = welcome_back(username)
+#    when "3"
+#      the_end
+#      exit
+#  end
+#end
