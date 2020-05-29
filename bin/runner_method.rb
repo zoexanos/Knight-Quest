@@ -1,4 +1,3 @@
-
 def welcome
   puts `clear`
   puts "Welcome, weary traveler. All may enter our homely inn."
@@ -31,10 +30,30 @@ def menu
   puts "
   1. Review all Knights that came before \n
   2. Add Knight\n
-  3. Go on Journey with Knight\n
-  4. Go back home\n
+  3. Edit your Knight\n
+  4. Report a fallen Knight 💔\n
+  5. Go on Journey with your Knight\n
+  6. Go back home\n
   "
   gets.chomp
+end
+
+def all_knights
+  $my_buddy = []
+  puts `clear`
+  puts "Kings Among Men:"
+  puts Knight.all.map { |u| u.name }
+  #Journey.all.map {|journey| journey.outcome.count }
+  #puts "Knight: #{knights_names}, Outcome: #{knights_outcome}"
+  sleep(1)
+  puts "\n\n\n"
+  puts "Please press enter."
+  gets.chomp
+  #puts "Select a knight."
+  #knight_name = gets.chomp
+  #$my_buddy << Knight.find_by(name: knight_name)
+  #$my_buddy.last
+  puts `clear`
 end
 
 def add_knight
@@ -53,10 +72,54 @@ def add_knight
   puts `clear`
 end
 
+def delete_knight
+  puts `clear`
+  puts "What is the name of the dead knight?"
+  dead_knight = gets.chomp
+  puts "And so rest the brave knight #{dead_knight}, may our hearts be the home of his final adventures"
+  Knight.find_by(name: dead_knight).delete
+  puts "Hit enter to continue."
+  gets.chomp
+  puts `clear`
+end
+
+
+def edit_knight
+  puts `clear`
+  puts "What is the name of the knight you would like to adjust?"
+  original_name = gets.chomp
+  puts "What is their new name?"
+  name = gets.chomp
+  puts "What is their weapon?"
+  weapon = gets.chomp
+  puts "What is their family color?"
+  color = gets.chomp
+  edit_knight = Knight.find_by(name: original_name)
+  edit_knight.update(name: name, weapon: weapon, color: color)
+  puts "#{original_name} is now #{edit_knight.name}"
+  puts "Hit enter to continue."
+  gets.chomp
+  puts `clear`
+end
+
+
+
 def travel_knight
+  #if $my_buddy.any?
+  #  $my_buddy.last.name
+  #elsif $my_buddy.any?!
+  #  $my_buddy << Knight.all.last.name
+  #  $my_buddy.last.name
+  #end
   Knight.all.last.name
 end 
+
 def travel_knight_weapon
+  #if $my_buddy.any?
+  #  $my_buddy.last.weapon
+  #  else
+  #    Knight.all.last.weapon
+  #  end
   Knight.all.last.weapon
 end
 
@@ -77,13 +140,6 @@ def hit_the_road
   gets.chomp
 end
 
-def all_knights
-  puts `clear`
-  puts Knight.all.map { |u| u.name }
-  puts "Hit enter to continue."
-  gets.chomp
-  puts `clear`
-end
 
 def trial_select_1
   puts `clear`
@@ -99,14 +155,17 @@ def trial_select_1
   if first_choice == "1"
     puts `clear`
     puts "Oh no! They hated it and would not eat the fish.\nThe quest was a failure..."
+    Journey.create(knight: Knight.all.last, trial: Trial.all.fifth, outcome: "Failure")
     sleep(2.5)
   elsif first_choice == "2"
     puts `clear`
     puts "Huzzah! Everyone loves bacon. The children ate ferociously.\nThe quest was a success!"
+    Journey.create(knight: Knight.all.last, trial: Trial.all.fifth, outcome: "Pass!!")
     sleep(2.5)
   else
     puts `clear`
     puts "That is not an appropriate response! The children cried and you left town ashamed."
+    Journey.create(knight: Knight.all.last, trial: Trial.all.fifth, outcome: "Failure")
     sleep(2.5)
   end
 
@@ -127,14 +186,17 @@ def trial_select_2
   if first_choice == "1"
     puts `clear`
     puts "Huzzah! Your trust gardener came in handy.\nThe quest was a success!"
+    Journey.create(knight: Knight.all.last, trial: Trial.all.fifth, outcome: "Pass!!")
     sleep(2.5)
   elsif first_choice == "2"
     puts `clear`
     puts "Oh no! #{travel_knight}'s weapon was not strong enough to get through Mordor.\nThe quest was a failure..."
+    Journey.create(knight: Knight.all.last, trial: Trial.all.fifth, outcome: "Failure")
     sleep(3)
   else
     puts `clear`
     puts "That is not an appropriate response! The orcs laughed and chased you back to the road."
+    Journey.create(knight: Knight.all.last, trial: Trial.all.fifth, outcome: "Failure")
     sleep(2.5)
   end
   puts `clear`
@@ -154,6 +216,7 @@ def trial_select_3
   if first_choice == "1"
     puts `clear`
     puts "Oh no! You were too close to the dragon and he ate #{travel_knight}'s #{travel_knight_weapon}.\nThe quest was a failure..."
+    Journey.create(knight: Knight.all.last, trial: Trial.all.fifth, outcome: "Failure")
     sleep(2)
   elsif first_choice == "2"
     puts `clear`
@@ -164,10 +227,12 @@ def trial_select_3
     puts "..."
     sleep(2)
     puts "The quest was a success!"
+    Journey.create(knight: Knight.all.last, trial: Trial.all.fifth, outcome: "Pass!!")
     sleep(2)
     else
       puts `clear`
       puts "That is not an appropriate response! The villagers are mad and chase you out of town."
+      Journey.create(knight: Knight.all.last, trial: Trial.all.fifth, outcome: "Failure")
       sleep(2.5)
   end
   puts `clear`
@@ -187,14 +252,17 @@ def trial_select_4
   if first_choice == "1"
     puts `clear`
     puts "Oh no! You guessed blue and both of you were magically knocked off the bridge!\nThe quest was a failure..."
+    Journey.create(knight: Knight.all.last, trial: Trial.all.fifth, outcome: "Failure")
     sleep(2.5)
   elsif first_choice == "2"
     puts `clear`
     puts "Oh no! #{travel_knight} guessed red and both of you were magically knocked off the bridge!\nThe quest was a failure..."
+    Journey.create(knight: Knight.all.last, trial: Trial.all.fifth, outcome: "Failure")
     sleep(2.5)
     else
     puts `clear`
     puts "That is not an appropriate response! Off the bridge with you!"
+    Journey.create(knight: Knight.all.last, trial: Trial.all.fifth, outcome: "Failure")
     sleep(2.5)
   end
   puts `clear`
@@ -214,14 +282,17 @@ def trial_select_5
   if first_choice == "1"
     puts `clear`
     puts "Oh no! During the fight with the beast, the poor maiden perished. Oops.\nThe quest was a failure..."
+    Journey.create(knight: Knight.all.last, trial: Trial.all.fifth, outcome: "Failure")
     sleep(3)
   elsif first_choice == "2"
     puts `clear`
     puts "Huzzah! Together with #{travel_knight}, you defeated to beast and untied the poor maiden. Pretty easy, huh?\nThe quest was a success!"
+    Journey.create(knight: Knight.all.last, trial: Trial.all.fifth, outcome: "Pass!!")
     sleep(3)
     else
     puts `clear`
     puts "That is not an appropriate response! The maiden was dragged into the sea and you both leave feeling sullen."
+    Journey.create(knight: Knight.all.last, trial: Trial.all.fifth, outcome: "Failure")
     sleep(3)
   end
   puts `clear`
@@ -235,13 +306,21 @@ end
 def welcome_back(username)
   puts `clear`
   puts "Welcome back, #{username} and #{travel_knight}."
-  sleep(2)
+  sleep(1)
   puts "What would you like to do?"
-  puts "Thats it, go to bed."
+  puts "
+  1. Check your Knight's trial outcome\n
+  2. Boast of your acclaim\n
+  3. Go home and relax\n
+  "
+  gets.chomp
+end
+
+def trial_tally
+  #
 end
 
 def the_end
   puts `clear`
   puts "You went home and settled back into a comfortable bed."
-  puts `exit`
 end

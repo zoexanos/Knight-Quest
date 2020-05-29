@@ -15,10 +15,16 @@ if username
       add_knight
       user_choice = menu
     when "3"
+      edit_knight
+      user_choice = menu
+    when "4"
+      delete_knight
+      user_choice = menu
+    when "5"
       departing(username)
       sleep(1.5)
       user_choice = "8"
-    when "4"
+    when "6"
       the_end
       exit
     end
@@ -55,3 +61,19 @@ while user_road != "8"
 end
 
 the_inn = welcome_back(username)
+
+while the_inn != "5"
+  case the_inn
+    when "1"
+      puts "geez louise"
+      sleep(1)
+      the_inn = welcome_back(username)
+    when "2"
+      puts "holy cow batman"
+      sleep(1)
+      the_inn = welcome_back(username)
+    when "3"
+      the_end
+      exit
+  end
+end
