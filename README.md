@@ -16,4 +16,11 @@ There will be text prompts, please be sure to answer when asked a question. It i
 _**Pick your Knight**_
 After passing your name through, you have options to Review all Knights that have passed through these doors, to add a new knight to the ledge, report a fallen knight, go on a journey with your knight of choice, or go back home.
 
-_
+_**Pick your Adventure**_
+From a menu select, enter the number for the path you'd like to follow.
+
+_**Make a choice**_
+Go through a trial and put your wits and strength to the test!
+
+_**Head home and sleep**_
+After a long days work, why don't you head to bed.

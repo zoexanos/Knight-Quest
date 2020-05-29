@@ -134,7 +134,7 @@ def hit_the_road
   3. Travel to the river.\n
   4. Talk to that weird old man.\n
   5. Travel to the sea.\n
-  6. Return to the inn.\n
+  6. Leave the road.\n
   7. Give up and go home.\n
   "
   gets.chomp
