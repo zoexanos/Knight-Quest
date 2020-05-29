@@ -20,13 +20,19 @@ def greeting(username)
   puts "Welcome #{username}, what would you like to do?"
 end
 
+def departing(username)
+  puts `clear`
+  puts "I hope you are safe, #{username}."
+end
+
 def menu
+  puts `clear`
   puts "\n"
   puts "
   1. Review all Knights that came before \n
   2. Add Knight\n
   3. Go on Journey with Knight\n
-  5. Leave the inn\n
+  4. Go back home\n
   "
   gets.chomp
 end
@@ -48,12 +54,16 @@ def add_knight
 end
 
 def travel_knight
-  my_buddy = Knight.all.last.name
+  Knight.all.last.name
 end 
+def travel_knight_weapon
+  Knight.all.last.weapon
+end
 
 def hit_the_road
   puts `clear`
   puts "#{travel_knight}: 'Where shall we go?'"
+  sleep(1)
   puts "\n"
   puts "
   1. Travel to a town.\n
@@ -61,7 +71,8 @@ def hit_the_road
   3. Travel to the river.\n
   4. Talk to that weird old man.\n
   5. Travel to the sea.\n
-  6. Give up and go home.
+  6. Return to the inn.\n
+  7. Give up and go home.\n
   "
   gets.chomp
 end
@@ -72,4 +83,165 @@ def all_knights
   puts "Hit enter to continue."
   gets.chomp
   puts `clear`
+end
+
+def trial_select_1
+  puts `clear`
+  puts "Oh no! The town is full of hungry orphans. It seems the townsfold need some herioc help."
+  sleep(1)
+  puts Trial.all.first.title
+  sleep(0.5)
+  puts "
+  1. Feed them fish.
+  2. Feed them bacon.
+  "  
+  first_choice = gets.chomp
+  if first_choice == "1"
+    puts `clear`
+    puts "Oh no! They hated it and would not eat the fish.\nThe quest was a failure..."
+    sleep(2.5)
+  elsif first_choice == "2"
+    puts `clear`
+    puts "Huzzah! Everyone loves bacon. The children ate ferociously.\nThe quest was a success!"
+    sleep(2.5)
+  else
+    puts `clear`
+    puts "That is not an appropriate response! The children cried and you left town ashamed."
+    sleep(2.5)
+  end
+
+  puts `clear`
+end
+
+def trial_select_2
+  puts `clear`
+  puts "The One Ring has returned, you must go swiftly!"
+  sleep(1)
+  puts Trial.all.second.title
+  sleep(0.5)
+  puts "
+  1. Bring your trusty gardener.
+  2. You got this. All you need is your knight's trusty weapon, the #{travel_knight_weapon}.
+  "  
+  first_choice = gets.chomp
+  if first_choice == "1"
+    puts `clear`
+    puts "Huzzah! Your trust gardener came in handy.\nThe quest was a success!"
+    sleep(2.5)
+  elsif first_choice == "2"
+    puts `clear`
+    puts "Oh no! #{travel_knight}'s weapon was not strong enough to get through Mordor.\nThe quest was a failure..."
+    sleep(3)
+  else
+    puts `clear`
+    puts "That is not an appropriate response! The orcs laughed and chased you back to the road."
+    sleep(2.5)
+  end
+  puts `clear`
+end
+
+def trial_select_3
+  puts `clear`
+  puts "A dragon is terrorizing this poor river town! What will you and #{travel_knight} do?"
+  sleep(1)
+  puts Trial.all.third.title
+  sleep(0.5)
+  puts "
+  1. Stab his heart!
+  2. Get him drunk and THEN stab his heart!
+  "  
+  first_choice = gets.chomp
+  if first_choice == "1"
+    puts `clear`
+    puts "Oh no! You were too close to the dragon and he ate #{travel_knight}'s #{travel_knight_weapon}.\nThe quest was a failure..."
+    sleep(2)
+  elsif first_choice == "2"
+    puts `clear`
+    puts "Huzzah! You and #{travel_knight} had an awesome party with a dragon and stabbed him in his sleep."
+    sleep(0.8)
+    puts "How cold-blooded."
+    sleep(1)
+    puts "..."
+    sleep(2)
+    puts "The quest was a success!"
+    sleep(2)
+    else
+      puts `clear`
+      puts "That is not an appropriate response! The villagers are mad and chase you out of town."
+      sleep(2.5)
+  end
+  puts `clear`
+end
+
+def trial_select_4
+  puts `clear`
+  puts "There's a creepy old man guarding a bridge you must cross. He asks you a question..."
+  sleep(1)
+  puts Trial.all.fourth.title
+  sleep(0.5)
+  puts "
+  1. Is it blue?
+  2. Is it red?
+  "  
+  first_choice = gets.chomp
+  if first_choice == "1"
+    puts `clear`
+    puts "Oh no! You guessed blue and both of you were magically knocked off the bridge!\nThe quest was a failure..."
+    sleep(2.5)
+  elsif first_choice == "2"
+    puts `clear`
+    puts "Oh no! #{travel_knight} guessed red and both of you were magically knocked off the bridge!\nThe quest was a failure..."
+    sleep(2.5)
+    else
+    puts `clear`
+    puts "That is not an appropriate response! Off the bridge with you!"
+    sleep(2.5)
+  end
+  puts `clear`
+end
+
+def trial_select_5
+  puts `clear`
+  puts "You travel to a gloomy beach. My god, some poor woman is held captive!"
+  sleep(1)
+  puts Trial.all.fifth.title
+  sleep(0.5)
+  puts "
+  1. Save the maiden, kill the beast!
+  2. Kill the beast, save the maiden!
+  "  
+  first_choice = gets.chomp
+  if first_choice == "1"
+    puts `clear`
+    puts "Oh no! During the fight with the beast, the poor maiden perished. Oops.\nThe quest was a failure..."
+    sleep(3)
+  elsif first_choice == "2"
+    puts `clear`
+    puts "Huzzah! Together with #{travel_knight}, you defeated to beast and untied the poor maiden. Pretty easy, huh?\nThe quest was a success!"
+    sleep(3)
+    else
+    puts `clear`
+    puts "That is not an appropriate response! The maiden was dragged into the sea and you both leave feeling sullen."
+    sleep(3)
+  end
+  puts `clear`
+end
+
+def departing_road
+  puts `clear`
+  puts "#{travel_knight}: Time to head back to the inn with the other travelers."
+end
+
+def welcome_back(username)
+  puts `clear`
+  puts "Welcome back, #{username} and #{travel_knight}."
+  sleep(2)
+  puts "What would you like to do?"
+  puts "Thats it, go to bed."
+end
+
+def the_end
+  puts `clear`
+  puts "You went home and settled back into a comfortable bed."
+  puts `exit`
 end
