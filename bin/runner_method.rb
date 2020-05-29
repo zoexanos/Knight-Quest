@@ -74,6 +74,10 @@ end
 
 def delete_knight
   puts `clear`
+  puts "Kings Among Men:"
+  puts Knight.all.map { |u| u.name }
+  sleep(1)
+  puts "\n\n\n"
   puts "What is the name of the dead knight?"
   dead_knight = gets.chomp
   puts "And so rest the brave knight #{dead_knight}, may our hearts be the home of his final adventures"
@@ -185,7 +189,7 @@ def trial_select_2
   first_choice = gets.chomp
   if first_choice == "1"
     puts `clear`
-    puts "Huzzah! Your trust gardener came in handy.\nThe quest was a success!"
+    puts "Huzzah! Your trusty gardener came in handy.\nThe quest was a success!"
     Journey.create(knight: Knight.all.last, trial: Trial.all.fifth, outcome: "Pass!!")
     sleep(4)
   elsif first_choice == "2"
