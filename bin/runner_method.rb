@@ -1,3 +1,5 @@
+$my_buddy = []
+
 def welcome
   puts `clear`
   puts "Welcome, weary traveler. All may enter our homely inn."
@@ -39,20 +41,19 @@ def menu
 end
 
 def all_knights
-  #$my_buddy = []
   puts `clear`
+  knight_list
+  puts "Choose a knight"
+  knight_name = gets.chomp
+  $my_buddy << Knight.find_by(name: knight_name)
+  $my_buddy
+end
+
+def knight_list
   puts "Kings Among Men:"
   puts Knight.all.map { |u| u.name }
-  #Journey.all.map {|journey| journey.outcome.count }
-  #puts "Knight: #{knights_names}, Outcome: #{knights_outcome}"
   sleep(1)
   puts "\n\n\n"
-  puts "Please press enter."
-  gets.chomp
-  #puts "Select a knight."
-  #knight_name = gets.chomp
-  #$my_buddy << Knight.find_by(name: knight_name)
-  #$my_buddy.last
 end
 
 def add_knight
@@ -64,7 +65,6 @@ def add_knight
   puts "What is their family color?"
   color = gets.chomp
   final_knight = Knight.create(name: name, weapon: weapon, color: color)
-  puts ""
   puts "You have created #{final_knight.name}, their weapon is #{final_knight.weapon}, their family color is #{final_knight.color}"
   puts "Hit enter to continue."
   gets.chomp
@@ -74,7 +74,7 @@ end
 def delete_knight
   puts `clear`
   puts "Kings Among Men:"
-  all_knights
+  knight_list
   sleep(1)
   puts "\n\n\n"
   puts "What is the name of the dead knight?"
@@ -105,25 +105,32 @@ def edit_knight
   puts `clear`
 end
 
+def loading_bar
+  puts `clear`
+  bar = TTY::ProgressBar.new("traveling [:bar]", total: 20)
+  20.times do
+  sleep(0.1)
+  bar.advance(1)
+end
+end
 
 
 def travel_knight
-  #if $my_buddy.any?
-  #  $my_buddy.last.name
-  #elsif $my_buddy.any?!
-  #  $my_buddy << Knight.all.last.name
-  #  $my_buddy.last.name
-  #end
-  Knight.all.last.name
+
+  if $my_buddy.any?
+   $my_buddy.last.name
+  else
+    $my_buddy << Knight.all.last
+    $my_buddy.last.name
+  end
 end 
 
 def travel_knight_weapon
-  #if $my_buddy.any?
-  #  $my_buddy.last.weapon
-  #  else
-  #    Knight.all.last.weapon
-  #  end
-  Knight.all.last.weapon
+  if $my_buddy.any?
+    $my_buddy.last.weapon
+    else
+      Knight.all.last.weapon
+    end
 end
 
 def hit_the_road
@@ -332,5 +339,14 @@ def trial_tally
 end
 def the_end
   puts `clear`
+  puts <<-'EOF'
+    ()___ 
+    ()//__/)_________________()
+    ||(___)//#/_/#/_/#/_/#()/||
+    ||----|#| |#|_|#|_|#|_|| ||
+    ||____|_|#|_|#|_|#|_|#||/||
+    ||    |#|_|#|_|#|_|#|_||
+  EOF
+  puts "\n\n"
   puts "You went home and settled back into a comfortable bed."
 end
