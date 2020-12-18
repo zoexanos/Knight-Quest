@@ -144,7 +144,7 @@ def hit_the_road
   3. Travel to the river.\n
   4. Talk to that weird old man.\n
   5. Travel to the sea.\n
-  6. Leave the road.\n
+  6. Travel to the inn.\n
   7. Give up and go home.\n
   "
   gets.chomp
@@ -315,6 +315,14 @@ end
 
 def welcome_back(username)
   puts `clear`
+  puts <<-'EOF'
+   ____||____
+  ///////////\
+ ///////////  \
+ |    _    |  |
+ |[] | | []|[]|
+ |   | |   |  |                  
+EOF
   puts "Welcome back, #{username} and #{travel_knight}."
   sleep(1)
   puts "What would you like to do?"
