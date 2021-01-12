@@ -75,7 +75,7 @@ the_inn = welcome_back(username)
 while the_inn != "5"
   case the_inn
     when "1"
-      trial_tally
+      trial_list
       the_inn = welcome_back(username)
     when "2"
       trial_tally
