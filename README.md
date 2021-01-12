@@ -24,3 +24,5 @@ Go through a trial and put your wits and strength to the test!
 
 _**Head home and sleep**_
 After a long days work, why don't you head to bed.
+
+This project was a collaborative effort between Zoe Xanos and Derrick Williams
