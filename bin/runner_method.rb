@@ -51,7 +51,8 @@ def all_knights
 end
 
 def knight_list
-  puts "Kings Among Men:\n"
+  puts "Kings Among Men:"
+  puts "\n"
   puts Knight.all.map { |u| puts u.name + ' the ' + u.color + ', Master of the ' + u.weapon }
   sleep(1)
   puts "\n"
@@ -375,7 +376,11 @@ def trial_tally
   puts "Hit enter to continue."
   gets.chomp
 end
+def clear_the_board
+  Journey.destroy_all
+end
 def the_end
+  outings = Journey.select{ |u| u.knight_id == $my_buddy.last.id }
   puts `clear`
   puts <<-'EOF'
     ()___ 
@@ -385,7 +390,6 @@ def the_end
     ||____|_|#|_|#|_|#|_|#||/||
     ||    |#|_|#|_|#|_|#|_||
   EOF
-  Journey.destroy_all
   puts "\n\n"
   puts "You went home and settled back into a comfortable bed."
 end

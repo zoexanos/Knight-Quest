@@ -81,7 +81,9 @@ while the_inn != "5"
       trial_tally
       the_inn = welcome_back(username)
     when "3"
+      loading_bar
       the_end
+      clear_the_board
       exit
   end
 end
