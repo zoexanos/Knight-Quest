@@ -343,7 +343,7 @@ def trial_list
   puts `clear`
   outings = Journey.select{ |u| u.knight_id == $my_buddy.last.id }
   trial_ids = outings.map{ |u| u.trial_id }
-  trial_names = Trial.where(id: trial_ids)
+  trial_names = Trial.find(trial_ids)
   trial_names = trial_names.map{ |u| u.title }
   outings = outings.map{ |u| u.outcome }
   list_trial_and_outcomes = trial_names.zip(outings).to_h
